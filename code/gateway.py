@@ -12,7 +12,6 @@ from flask import jsonify
 from proto import np_to_protobuf
 
 host = os.getenv('TF_SERVING_HOST', 'localhost:8500')
-
 channel = grpc.insecure_channel(host)
 stub = prediction_service_pb2_grpc.PredictionServiceStub(channel)
 
@@ -21,7 +20,7 @@ preprocessor = create_preprocessor('xception', target_size=(299, 299))
 def prepare_request(X):
     pb_request = predict_pb2.PredictRequest()
 
-    pb_request.model_spec.name = 'location_classifier'
+    pb_request.model_spec.name = 'location-classifier'
     pb_request.model_spec.signature_name = 'serving_default'
 
     pb_request.inputs['input_36'].CopyFrom(np_to_protobuf(X))
@@ -43,7 +42,7 @@ def predict(url):
     pb_request = prepare_request(X)
     pb_response = stub.Predict(pb_request, timeout=20.0)
     response = prepare_response(pb_response)
-    return response
+    return max(response, key=response.get)
 
 app = Flask('gateway')
 

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: location-classifier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: location-classifier
+  template:
+    metadata:
+      labels:
+        app: location-classifier
+    spec:
+      containers:
+      - name: location-classifier
+        # image: zoomcamp-capstone-model:xception-v4-003
+        image: 939646755809.dkr.ecr.us-east-2.amazonaws.com/location-classifier-eks:zoomcamp-capstone-model-xception-v4-003
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "1"
+        ports:
+        - containerPort: 8500
