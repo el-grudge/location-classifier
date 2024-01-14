@@ -4,7 +4,7 @@ import requests
 import boto3
 
 # Load secrets from secrets.toml
-url = st.secrets["aws"]["eks_url"]
+url = st.secrets["aws"]["url_2"]
 s3_bucket_name = st.secrets["aws"]["s3_bucket_name"]
 image_url = st.secrets["aws"]["image_url"]
 
