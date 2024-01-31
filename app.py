@@ -32,4 +32,7 @@ if uploaded_file is not None:
 
     # Send the image URL as JSON data
     result = requests.post(url, json={"url": img_url})
-    st.write("Prediction result:", result.json())
+    
+    # Including the variable in the text using f-string formatting
+    last_line = f"<span style='font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif; font-style: italic; font-size:24px;'>Where am I? {result.json()}</span>."
+    st.markdown(last_line, unsafe_allow_html=True)
