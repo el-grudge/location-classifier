@@ -12,7 +12,8 @@ st.title("Location Classifier App")
 
 st.header('Upload an image of your location')
 
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"],
+                                 help="Upload a street-level view from one of these cities: Cairo, Paris, Moscow")
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert('RGB')
