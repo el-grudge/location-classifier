@@ -1,5 +1,7 @@
 # Location Determination
 
+You can test this app [here](https://location-classifier-s7kytw3ahappetrrznzk2sr.streamlit.app/).
+
 The Kaggle dataset [where am i](https://www.kaggle.com/datasets/ahmedhaytham/where-am-i) was created by Ahmed Haytham and Shady Nagy as an assignment during their internship at Curve-AI. They were tasked with building an image dataset from 3 youtube videos showing a car driving in 3 diffierent cities (Cairo, Paris, Moscow) and training an image classifier to predict the city from an image.
 
 For the capstone, I used this dataset to build and deploy an image classifier. Here are 3 sample images from the dataset:
